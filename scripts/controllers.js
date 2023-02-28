@@ -1,17 +1,41 @@
 app.controller('indexController',['$scope',function($scope){
     $scope.test = "Hello World from indexController";
+
+    $scope.actionList = [];
+
+    $scope.converterList = [{'Name':'Velocity','ref':"#!velocity"},
+                            {'Name':'Distance','ref':"#!distance"},
+                            {'Name':'Temperature','ref':"#!temperature"}];
+
+    $scope.calculationList = [{'Name':'Ohm','ref':"#!ohmslaw"},
+                              {'Name':'Triangle Area','ref':"#!trianglearea"}];
+
+
+    $scope.onMenuClicked = function(menuClicked){
+        switch(menuClicked){
+            case 'main':
+                $scope.actionList = null;
+                break;
+            case 'converters':
+                $scope.actionList = $scope.converterList;
+                break;
+            case 'calculations':
+                $scope.actionList = $scope.calculationList;
+                break;            
+        }
+    }
 }])
 
 app.controller('mainPageController',['$scope',function($scope){
     $scope.test = "Hello World from mainPageController";
 }])
 
-app.controller('page1Controller',['$scope',function($scope){
-    $scope.test = "Hello World from page1Controller";
+app.controller('convertersController',['$scope',function($scope){
+    $scope.test = "Hello World from convertersController";
 }])
 
-app.controller('page2Controller',['$scope',function($scope){
-    $scope.test = "Hello World from page2Controller";
+app.controller('calculationsController',['$scope',function($scope){
+    $scope.test = "Hello World from calculationsController";
 }])
 
 app.config(function($routeProvider){
@@ -20,12 +44,32 @@ app.config(function($routeProvider){
         templateUrl : "templates/main.html",
         controller: "mainPageController"        
     })
-    .when("/page1", {
-        templateUrl : "templates/page1.html",
-        controller : "page1Controller"
+    .when("/converters", {
+        templateUrl : "templates/converters.html",
+        controller : "convertersController"
     })
-    .when("/page2", {
-        templateUrl : "templates/page2.html",
-        controller : "page2Controller"
+    .when("/calculations", {
+        templateUrl : "templates/calculations.html",
+        controller : "calculationsController"
+    })
+    .when("/velocity", {
+        templateUrl : "templates/velocity.html",
+        controller : "converterController"
+    })
+    .when("/distance", {
+        templateUrl : "templates/distance.html",
+        controller : "converterController"
+    })
+    .when("/ohmslaw", {
+        templateUrl : "templates/ohmslaw.html",
+        controller : "calculationsController"
+    })
+    .when("/trianglearea", {
+        templateUrl : "templates/trianglearea.html",
+        controller : "calculationsController"
+    })
+    .when("/temperature", {
+        templateUrl : "templates/temperature.html",
+        controller : "converterController"
     })
 })
