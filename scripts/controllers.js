@@ -8,7 +8,8 @@ app.controller('indexController',['$scope',function($scope){
                             {'Name':'Temperature','ref':"#!temperature"}];
 
     $scope.calculationList = [{'Name':'Ohm','ref':"#!ohmslaw"},
-                              {'Name':'Triangle Area','ref':"#!trianglearea"}];
+                              {'Name':'Triangle Area','ref':"#!trianglearea"},
+                              {'Name':'Density','ref':"#!density"}];
 
 
     $scope.onMenuClicked = function(menuClicked){
@@ -72,4 +73,7 @@ app.config(function($routeProvider){
         templateUrl : "templates/temperature.html",
         controller : "converterController"
     })
-})
+    .when("/density", {
+        templateUrl : "templates/density.html",
+        controller : "calculationsController"
+})})
